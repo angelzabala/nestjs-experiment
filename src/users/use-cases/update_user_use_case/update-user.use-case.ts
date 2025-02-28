@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { UpdateUserRequestDto } from './dto/update-user-request.dto';
 import { UpdateUserResponseDto } from './dto/update-user-response.dto';
 import { UpdateUserService } from './update-user.service';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UpdateUserUseCase {
@@ -10,7 +11,10 @@ export class UpdateUserUseCase {
   ) {}
 
   async execute(request: UpdateUserRequestDto): Promise<UpdateUserResponseDto> {
-    const user = await this.updateUserService.update(request.id, request.updateData);
+    const user = await this.updateUserService.update(
+      String(request.id), 
+      request.updateData as UpdateUserDto
+    );
     
     if (!user) {
       throw new NotFoundException(`User with ID ${request.id} not found`);

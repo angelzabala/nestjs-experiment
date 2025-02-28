@@ -1,10 +1,10 @@
 import { z } from 'zod';
 import { createZodDto } from 'nestjs-zod';
 import { ApiProperty } from '@nestjs/swagger';
-import { CreateUserSchema } from '../../create_user_use_case/dto/create-user.dto';
+import { UserSchema } from '../../create_user_use_case/dto/create-user.dto';
 
 // Define the Zod schema by making all fields from CreateUserSchema optional
-export const UpdateUserSchema = CreateUserSchema.partial();
+export const UpdateUserSchema = UserSchema.partial();
 
 // Create the DTO class from the schema
 export class UpdateUserDto extends createZodDto(UpdateUserSchema) {

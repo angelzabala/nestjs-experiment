@@ -4,18 +4,29 @@ import { User } from '../../../schemas/user.schema';
 import { ApiProperty } from '@nestjs/swagger';
 
 // Define the Zod schema for a single user
-export const UserDtoSchema = z.object({
+export const UserDtoSchema: z.ZodType<{
+  id: string;
+  name: string;
+  email: string;
+  age?: number;
+}> = z.object({
   id: z.string(),
   name: z.string(),
   email: z.string().email(),
-  age: z.number().int().positive().optional(),
-  createdAt: z.date(),
+  age: z.number().optional(),
 });
 
 // Define the Zod schema for the response
-export const FindAllUsersResponseSchema = z.object({
+export const FindAllUsersResponseSchema: z.ZodType<{
+  users: Array<z.infer<typeof UserDtoSchema>>;
+  total: number;
+  page: number;
+  limit: number;
+}> = z.object({
   users: z.array(UserDtoSchema),
-  count: z.number().int().nonnegative(),
+  total: z.number(),
+  page: z.number(),
+  limit: z.number(),
 });
 
 // Create the UserDto class

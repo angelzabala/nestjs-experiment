@@ -1,16 +1,18 @@
 import { z } from 'zod';
 import { createZodDto } from 'nestjs-zod';
 import { ApiProperty } from '@nestjs/swagger';
+import '@wahyubucil/nestjs-zod-openapi/boot';
+import { patchNestjsSwagger } from '@wahyubucil/nestjs-zod-openapi';
 
-// Define the Zod schema
-export const CreateUserSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters long' }),
-  email: z.string().email({ message: 'Invalid email format' }),
-  age: z.number().int().positive().optional(),
+// Exportar el esquema
+export const UserSchema = z.object({
+  username: z.string(),
+  email: z.string().email(),
+  password: z.string().min(6)
 });
 
 // Create the DTO class from the schema
-export class CreateUserDto extends createZodDto(CreateUserSchema) {
+export class CreateUserDto extends createZodDto(UserSchema) {
   @ApiProperty({ 
     description: 'The name of the user',
     example: 'John Doe',
@@ -30,4 +32,19 @@ export class CreateUserDto extends createZodDto(CreateUserSchema) {
     required: false
   })
   age?: number;
-} 
+
+  @ApiProperty({ 
+    description: 'The password of the user',
+    example: 'password123'
+  })
+  password: string;
+
+  @ApiProperty({ 
+    description: 'The username of the user',
+    example: 'johndoe'
+  })
+  username: string;
+}
+
+// Antes de crear el documento Swagger
+patchNestjsSwagger(); 

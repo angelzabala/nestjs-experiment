@@ -4,7 +4,13 @@ import { User } from '../../../schemas/user.schema';
 import { ApiProperty } from '@nestjs/swagger';
 
 // Define the Zod schema
-export const CreateUserResponseSchema = z.object({
+export const CreateUserResponseSchema: z.ZodType<{
+  id: string;
+  name: string;
+  email: string;
+  age?: number;
+  createdAt: Date;
+}> = z.object({
   id: z.string(),
   name: z.string(),
   email: z.string().email(),

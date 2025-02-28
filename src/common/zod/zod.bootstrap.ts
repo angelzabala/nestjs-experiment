@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { createZodDto } from 'nestjs-zod';
+import { createZodDto } from '@wahyubucil/nestjs-zod-openapi'
 
 // Add custom error messages
 z.setErrorMap((issue, ctx) => {

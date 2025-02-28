@@ -3,11 +3,16 @@ import { createZodDto } from 'nestjs-zod';
 import { ApiProperty } from '@nestjs/swagger';
 
 // Define the Zod schema
-export const FindAllUsersRequestSchema = z.object({
-  page: z.number().int().positive().optional(),
-  limit: z.number().int().positive().optional(),
+export const FindAllUsersRequestSchema: z.ZodType<{
+  page?: number;
+  limit?: number;
+  sortBy?: string;
+  order?: 'asc' | 'desc';
+}> = z.object({
+  page: z.number().optional(),
+  limit: z.number().optional(),
   sortBy: z.string().optional(),
-  order: z.enum(['asc', 'desc']).optional(),
+  order: z.enum(['asc', 'desc']).optional()
 });
 
 // Create the DTO class from the schema
