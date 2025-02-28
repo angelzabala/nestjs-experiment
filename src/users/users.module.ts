@@ -1,34 +1,24 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserModel } from './schemas/user.schema';
-import { User } from './schemas/user.schema';
 
 // Repositories
-import { UserMongoRepository } from './repositories/user-repository.mongodb';
-import { USER_REPOSITORY } from './repositories/user-repository.interface';
+import { UserMongoRepository } from './repositories/user_repository.mongodb';
+import { USER_REPOSITORY } from './repositories/user_repository.interface';
 
 // Import all controllers, services, and use cases from the index
 import {
   // Controllers
   CreateUserController,
-  // FindAllUsersController,
-  // FindOneUserController,
-  // UpdateUserController,
-  // RemoveUserController,
+  CreateAndGetUserController,
   
   // Services
   CreateUserService,
-  // FindAllUsersService,
-  // FindOneUserService,
-  // UpdateUserService,
-  // RemoveUserService,
+  CreateAndGetUserService,
   
   // Use Cases
   CreateUserUseCase,
-  // FindAllUsersUseCase,
-  // FindOneUserUseCase,
-  // UpdateUserUseCase,
-  // RemoveUserUseCase
+  CreateAndGetUserUseCase,
 } from './use-cases';
 
 @Module({
@@ -37,10 +27,7 @@ import {
   ],
   controllers: [
     CreateUserController,
-    // FindAllUsersController,
-    // FindOneUserController,
-    // UpdateUserController,
-    // RemoveUserController
+    CreateAndGetUserController,
   ],
   providers: [
     // Repository
@@ -50,23 +37,14 @@ import {
     },
     // Services
     CreateUserService,
-    // FindAllUsersService,
-    // FindOneUserService,
-    // UpdateUserService,
-    // RemoveUserService,
+    CreateAndGetUserService,
     // Use Cases
     CreateUserUseCase,
-    // FindAllUsersUseCase,
-    // FindOneUserUseCase,
-    // UpdateUserUseCase,
-    // RemoveUserUseCase,
+    CreateAndGetUserUseCase,
   ],
   exports: [
     CreateUserUseCase,
-    // FindAllUsersUseCase,
-    // FindOneUserUseCase,
-    // UpdateUserUseCase,
-    // RemoveUserUseCase
+    CreateAndGetUserUseCase,
   ],
 })
 export class UsersModule {} 

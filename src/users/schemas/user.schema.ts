@@ -18,6 +18,7 @@ export const UserModel = model('User', mongooseSchema);
 
 // Type definitions
 export type User = InstanceType<typeof UserModel> & {
+  _id: string;
   __v?: number;
   createdAt?: Date;
   updatedAt?: Date;
