@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { CreateUserResponseDto } from './dto/create-user-response.dto';
 import { CreateUserService } from './create-user.service';
-import { User } from './schemas/user.schema';
+import { User } from '../../schemas/user.schema';
 
 @Injectable()
 export class CreateUserUseCase {

@@ -34,7 +34,7 @@ npm install
 Create a `.env` file in the root directory with the following variables:
 
 ```
-MONGODB_URI=mongodb://localhost:27017/nestjs-users
+MONGODB_URI=mongodb://localhost:27017/nestjs-experiment
 PORT=3000
 ```
 

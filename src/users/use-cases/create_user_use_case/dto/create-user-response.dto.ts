@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { createZodDto } from 'nestjs-zod';
-import { User } from '../schemas/user.schema';
+import { User } from '../../../schemas/user.schema';
 
 // Define the Zod schema con anotación de tipo explícita
 export const CreateUserResponseSchema: z.ZodType<{
@@ -25,6 +25,6 @@ export class CreateUserResponseDto extends createZodDto(CreateUserResponseSchema
     this.name = user.name;
     this.email = user.email;
     this.age = user.age;
-    this.createdAt = user.createdAt;
+    this.createdAt = user.createdAt || new Date();
   }
 } 
