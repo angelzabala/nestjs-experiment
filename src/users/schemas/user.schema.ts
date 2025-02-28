@@ -1,21 +1,25 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { model } from 'mongoose';
+import { z } from 'zod';
+import { zodSchema } from '@zodyac/zod-mongoose';
 
-export type UserDocument = HydratedDocument<User>;
+const UserZodSchema = z.object({
+  name: z.string().min(1),
+  email: z.string().email(),
+  age: z.number(),
+});
 
-@Schema()
-export class User {
-  @Prop({ required: true })
-  name: string;
+// Generate Mongoose schema from Zod with timestamps
+const mongooseSchema = zodSchema(UserZodSchema, {
+  timestamps: true, // Handles createdAt and updatedAt automatically
+});
 
-  @Prop({ required: true, unique: true })
-  email: string;
+// Create Mongoose model
+export const UserModel = model('User', mongooseSchema);
 
-  @Prop()
-  age: number;
-
-  @Prop({ default: Date.now })
-  createdAt: Date;
-}
-
-export const UserSchema = SchemaFactory.createForClass(User); 
+// Type definitions
+export type User = InstanceType<typeof UserModel> & {
+  __v?: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+};
+export type UserData = z.infer<typeof UserZodSchema>;

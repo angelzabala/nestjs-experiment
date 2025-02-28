@@ -2,7 +2,7 @@ import { Controller, Post, Body } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 import { createZodDto } from '@wahyubucil/nestjs-zod-openapi';
 import { CreateUserUseCase } from './create-user.use-case';
-import { UserSchema } from './dto/create-user.dto';
+import { CreateUserDto, UserSchema } from './dto/create-user.dto';
 import { CreateUserResponseSchema } from './dto/create-user-response.dto';
 
 @ApiTags('users')
@@ -14,7 +14,7 @@ export class CreateUserController {
   @ApiOperation({ summary: 'Create a new user' })
   @ApiBody({
     description: 'Datos del usuario a crear',
-    type: createZodDto(UserSchema)
+    type: createZodDto(CreateUserResponseSchema)
   })
   @ApiResponse({ 
     status: 201, 
@@ -22,8 +22,12 @@ export class CreateUserController {
     type: createZodDto(CreateUserResponseSchema)
   })
   @ApiResponse({ status: 400, description: 'Bad request.' })
-  async create(@Body() createUserDto: ReturnType<typeof createZodDto<typeof UserSchema>>) {
-    // Pasa directamente el DTO al caso de uso
-    return this.createUserUseCase.execute(createUserDto);
+  async create(@Body() createUserDto: ReturnType<typeof createZodDto<typeof CreateUserResponseSchema>>) {
+    // Crear una nueva instancia de CreateUserDto
+    const userData = new CreateUserDto();
+    // Copiar las propiedades
+    Object.assign(userData, createUserDto);
+    // Pasar la instancia al caso de uso
+    return this.createUserUseCase.execute(userData);
   }
 } 

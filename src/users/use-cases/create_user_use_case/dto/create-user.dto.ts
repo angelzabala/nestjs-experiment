@@ -32,18 +32,6 @@ export class CreateUserDto extends createZodDto(UserSchema) {
     required: false
   })
   age?: number;
-
-  @ApiProperty({ 
-    description: 'The password of the user',
-    example: 'password123'
-  })
-  password: string;
-
-  @ApiProperty({ 
-    description: 'The username of the user',
-    example: 'johndoe'
-  })
-  username: string;
 }
 
 // Antes de crear el documento Swagger

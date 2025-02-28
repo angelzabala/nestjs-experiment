@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from './schemas/user.schema';
+import { UserModel } from './schemas/user.schema';
+import { User } from './schemas/user.schema';
 
 // Repositories
 import { UserMongoRepository } from './repositories/user-repository.mongodb';
@@ -10,36 +11,36 @@ import { USER_REPOSITORY } from './repositories/user-repository.interface';
 import {
   // Controllers
   CreateUserController,
-  FindAllUsersController,
-  FindOneUserController,
-  UpdateUserController,
-  RemoveUserController,
+  // FindAllUsersController,
+  // FindOneUserController,
+  // UpdateUserController,
+  // RemoveUserController,
   
   // Services
   CreateUserService,
-  FindAllUsersService,
-  FindOneUserService,
-  UpdateUserService,
-  RemoveUserService,
+  // FindAllUsersService,
+  // FindOneUserService,
+  // UpdateUserService,
+  // RemoveUserService,
   
   // Use Cases
   CreateUserUseCase,
-  FindAllUsersUseCase,
-  FindOneUserUseCase,
-  UpdateUserUseCase,
-  RemoveUserUseCase
+  // FindAllUsersUseCase,
+  // FindOneUserUseCase,
+  // UpdateUserUseCase,
+  // RemoveUserUseCase
 } from './use-cases';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
+    MongooseModule.forFeature([{ name: UserModel.name, schema: UserModel.schema }]),
   ],
   controllers: [
     CreateUserController,
-    FindAllUsersController,
-    FindOneUserController,
-    UpdateUserController,
-    RemoveUserController
+    // FindAllUsersController,
+    // FindOneUserController,
+    // UpdateUserController,
+    // RemoveUserController
   ],
   providers: [
     // Repository
@@ -49,23 +50,23 @@ import {
     },
     // Services
     CreateUserService,
-    FindAllUsersService,
-    FindOneUserService,
-    UpdateUserService,
-    RemoveUserService,
+    // FindAllUsersService,
+    // FindOneUserService,
+    // UpdateUserService,
+    // RemoveUserService,
     // Use Cases
     CreateUserUseCase,
-    FindAllUsersUseCase,
-    FindOneUserUseCase,
-    UpdateUserUseCase,
-    RemoveUserUseCase,
+    // FindAllUsersUseCase,
+    // FindOneUserUseCase,
+    // UpdateUserUseCase,
+    // RemoveUserUseCase,
   ],
   exports: [
     CreateUserUseCase,
-    FindAllUsersUseCase,
-    FindOneUserUseCase,
-    UpdateUserUseCase,
-    RemoveUserUseCase
+    // FindAllUsersUseCase,
+    // FindOneUserUseCase,
+    // UpdateUserUseCase,
+    // RemoveUserUseCase
   ],
 })
 export class UsersModule {} 
