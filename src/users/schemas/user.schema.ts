@@ -5,7 +5,7 @@ import { zodSchema } from '@zodyac/zod-mongoose';
 const UserZodSchema = z.object({
   name: z.string().min(1),
   email: z.string().email(),
-  age: z.number(),
+  age: z.number().int().positive().optional() as unknown as z.ZodOptional<z.ZodNumber>,
 });
 
 // Generate Mongoose schema from Zod with timestamps

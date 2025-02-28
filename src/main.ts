@@ -14,8 +14,8 @@ async function bootstrap() {
   
   // Set up Swagger documentation
   const config = new DocumentBuilder()
-    .setTitle('NestJS User API')
-    .setDescription('API for managing users')
+    .setTitle('API de Usuarios')
+    .setDescription('API para gestionar usuarios')
     .setVersion('1.0')
     .addTag('users')
     .build();

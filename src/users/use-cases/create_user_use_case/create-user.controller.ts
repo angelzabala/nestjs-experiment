@@ -1,5 +1,5 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiProperty } from '@nestjs/swagger';
 import { createZodDto } from '@wahyubucil/nestjs-zod-openapi';
 import { CreateUserUseCase } from './create-user.use-case';
 import { CreateUserDto, UserSchema } from './dto/create-user.dto';
@@ -12,6 +12,10 @@ export class CreateUserController {
 
   @Post()
   @ApiOperation({ summary: 'Create a new user' })
+  @ApiProperty({
+    description: 'Datos del usuario a crear',
+    type: createZodDto(UserSchema)
+  })
   @ApiBody({
     description: 'Datos del usuario a crear',
     type: createZodDto(CreateUserResponseSchema)
