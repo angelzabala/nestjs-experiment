@@ -1,10 +1,10 @@
-FROM node:18-alpine AS development
+FROM node:20.18.3-alpine AS development
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install
+RUN npm install --legacy-peer-deps
 
 # For better hot reloading in development
 RUN npm install -g @nestjs/cli nodemon
@@ -13,7 +13,7 @@ COPY . .
 
 RUN npm run build
 
-FROM node:18-alpine AS production
+FROM node:20.18.3-alpine AS production
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}

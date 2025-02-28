@@ -12,8 +12,8 @@ A modern, well-structured REST API for user management built with NestJS, MongoD
 
 ## Prerequisites
 
-- Node.js (v18+)
-- npm or yarn
+- Node.js (v18+) initially created with v20.5.1 and moved to v20.18.3
+- npm
 - MongoDB (local or remote)
 
 ## Installation

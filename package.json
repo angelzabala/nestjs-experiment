@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@anatine/zod-nestjs": "^2.0.10",
+    "@anatine/zod-openapi": "^2.2.7",
     "@nestjs/common": "^11.0.1",
     "@nestjs/config": "^4.0.0",
     "@nestjs/core": "^11.0.1",
@@ -35,7 +36,8 @@
     "nestjs-zod": "^4.3.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
-    "zod": "^3.24.2"
+    "zod": "^3.24.2",
+    "zod-openapi": "^4.2.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
