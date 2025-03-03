@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { CreateUserDto } from './dto/create_user.dto';
+import { CreateUserDto } from './dto/create_user_use_case.request.dto';
 import { User } from '../../schemas/user.schema';
 import { IUserRepository, USER_REPOSITORY } from '../../repositories/user_repository.interface';
 

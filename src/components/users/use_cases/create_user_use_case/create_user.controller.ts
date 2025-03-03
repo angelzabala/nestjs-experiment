@@ -2,8 +2,8 @@ import { Controller, Post, Body } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 import { createZodDto, zodToOpenAPI } from 'nestjs-zod';
 import { CreateUserUseCase } from './create_user.use_case';
-import { CreateUserDto, UserSchema } from './dto/create_user.dto';
-import { CreateUserResponseSchema } from './dto/create_user_response.dto';
+import { CreateUserDto, UserSchema } from './dto/create_user_use_case.request.dto';
+import { CreateUserResponseSchema } from './dto/create_user_use_case.response.dto';
 
 @ApiTags('users')
 @Controller('users')

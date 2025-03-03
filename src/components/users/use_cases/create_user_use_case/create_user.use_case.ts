@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create_user.dto';
-import { CreateUserResponseDto } from './dto/create_user_response.dto';
+import { CreateUserDto } from './dto/create_user_use_case.request.dto';
+import { CreateUserResponseDto } from './dto/create_user_use_case.response.dto';
 import { CreateUserService } from './create_user.service';
 import { User } from '../../schemas/user.schema';
 

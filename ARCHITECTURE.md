@@ -15,40 +15,46 @@ The project follows a use-case driven approach, which organizes code around busi
 
 ## Project Structure
 
-```
+```text
 src/
-├── common/                 # Shared utilities and modules
-│   └── zod/                # Zod validation module
-├── config/                 # Application configuration
-├── database/               # Database connection and configuration
-├── users/                  # Users domain module
-│   ├── schemas/            # MongoDB schemas
-│   └── use-cases/          # User-related use cases
-│       ├── create_user_use_case/
-│       ├── find_all_users_use_case/
-│       ├── find_one_user_use_case/
-│       ├── remove_user_use_case/
-│       ├── update_user_use_case/
-│       └── index.ts        # Exports all use cases
-├── app.controller.ts       # Main application controller
-├── app.module.ts           # Main application module
-├── app.service.ts          # Main application service
-└── main.ts                 # Application entry point
+├── common/                  # Shared utilities and modules
+│   └── database/            # Database module
+├── components/
+│   └── <entity>/            # Users domain module
+│       ├── repositories/    
+│       │   ├── <entity_in_singular>_repository.interface.ts
+│       │   └── <entity_in_singular>_repository.mongodb.ts
+│       ├── schemas/         # MongoDB schemas
+│       │   └── <entity_in_singular>.schema.ts
+│       └── use-cases/      
+│           └── <use_case>/  
+│               ├── dto/     
+│               │   ├── <use_case>.request.dto.ts
+│               │   └── <use_case>.response.dto.ts
+│               ├── <use_case>.controller.ts
+│               ├── <use_case>.service.ts
+│               ├── <use_case>.use_case.ts
+│               └── index.ts
+│       └── <entity>.module.ts
+├── app.controller.ts       
+├── app.module.ts           
+├── app.service.ts          
+└── main.ts                 
 ```
 
 ## Use Case Structure
 
 Each use case follows a consistent structure:
 
-```
-use-case-name/
-├── dto/                    # Data Transfer Objects
-│   ├── request.dto.ts      # Request validation
-│   └── response.dto.ts     # Response formatting
-├── use-case-name.controller.ts  # HTTP controller
-├── use-case-name.service.ts     # Service implementation
-├── use-case-name.use-case.ts    # Use case orchestration
-└── index.ts                     # Exports for the use case
+```text
+<use_case>/                  # Feature-specific implementation
+├── dto/                     # Data Transfer Objects layer
+│   ├── <use_case>.request.dto.ts  # Input validation schema
+│   └── <use_case>.response.dto.ts # Output serialization schema
+├── <use_case>.controller.ts # HTTP endpoint handler (route definition)
+├── <use_case>.service.ts    # Business logic orchestrator
+├── <use_case>.use_case.ts   # Core application logic (single responsibility)
+└── index.ts                 # Public API exports (encapsulation)
 ```
 
 ### Components

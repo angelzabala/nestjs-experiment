@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User, UserModel } from '../schemas/user.schema';
-import { CreateUserDto } from '../use-cases/create_user_use_case/dto/create_user.dto';
-import { GetUserDto } from '../use-cases/create_and_get_user_use_case/dto/create_and_get.dto';
+import { CreateUserDto } from '../use_cases/create_user_use_case/dto/create_user_use_case.request.dto';
+import { GetUserDto } from '../use_cases/create_and_get_user_use_case/dto/create_and_get_user_use_case.request.dto.';
 import { IUserRepository } from './user_repository.interface';
 
 @Injectable()

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { User } from '../../schemas/user.schema';
-import { GetUserDto } from './dto/create_and_get.dto';
-import { CreateAndGetUserResponseDto } from './dto/create_and_get_response.dto';
+import { GetUserDto } from './dto/create_and_get_user_use_case.request.dto.';
+import { CreateAndGetUserResponseDto } from './dto/create_and_get_user_use_case.response.dto';
 import { CreateAndGetUserService } from './create_and_get.service';
 
 @Injectable()

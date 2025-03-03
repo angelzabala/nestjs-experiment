@@ -19,7 +19,7 @@ import {
   // Use Cases
   CreateUserUseCase,
   CreateAndGetUserUseCase,
-} from './use-cases';
+} from './use_cases';
 
 @Module({
   imports: [
