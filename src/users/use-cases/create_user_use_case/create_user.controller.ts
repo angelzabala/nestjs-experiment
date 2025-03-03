@@ -1,6 +1,6 @@
 import { Controller, Post, Body } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiProperty } from '@nestjs/swagger';
-import { createZodDto } from '@wahyubucil/nestjs-zod-openapi';
+import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
+import { createZodDto, zodToOpenAPI } from 'nestjs-zod';
 import { CreateUserUseCase } from './create_user.use_case';
 import { CreateUserDto, UserSchema } from './dto/create_user.dto';
 import { CreateUserResponseSchema } from './dto/create_user_response.dto';
@@ -12,18 +12,11 @@ export class CreateUserController {
 
   @Post()
   @ApiOperation({ summary: 'Create a new user' })
-  @ApiProperty({
-    description: 'Datos del usuario a crear',
-    type: createZodDto(UserSchema)
-  })
-  @ApiBody({
-    description: 'Datos del usuario a crear',
-    type: createZodDto(CreateUserResponseSchema)
-  })
+  @ApiBody({ description: 'Datos del usuario a crear', schema: zodToOpenAPI(UserSchema) })
   @ApiResponse({ 
     status: 201, 
     description: 'The user has been successfully created.',
-    type: createZodDto(CreateUserResponseSchema)
+    schema: zodToOpenAPI(CreateUserResponseSchema)
   })
   @ApiResponse({ status: 400, description: 'Bad request.' })
   async create(@Body() createUserDto: ReturnType<typeof createZodDto<typeof CreateUserResponseSchema>>) {

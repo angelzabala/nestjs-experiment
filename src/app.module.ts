@@ -4,7 +4,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import { UsersModule } from './users/users.module';
-import { ZodModule } from './common/zod/zod.module';
 
 @Module({
   imports: [
@@ -12,7 +11,6 @@ import { ZodModule } from './common/zod/zod.module';
       isGlobal: true,
       envFilePath: '.env',
     }),
-    ZodModule,
     DatabaseModule,
     UsersModule,
   ],
