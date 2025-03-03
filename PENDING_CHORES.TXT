@@ -21,6 +21,10 @@
 
 GENERAR OTRO REPO SIMILAR CON NESTJS/POSTGRES/PRISMA
 
+de aca para abajo lo agrego la IA, no esta realmente contemplado si lo voy a hacer 
+==================================================================================
+
+
 PENDING CHORES AND FUTURE IMPROVEMENTS
 =====================================
 
