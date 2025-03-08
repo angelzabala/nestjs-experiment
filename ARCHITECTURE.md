@@ -8,10 +8,15 @@ The project follows a use-case driven approach, which organizes code around busi
 
 ### Key Architectural Principles
 
-1. **Separation of Concerns**: Each component has a single responsibility
+1. **Separation of Concerns**: Each use_case has a single responsibility
 2. **Use-Case Driven**: Code is organized around business operations
 3. **Domain-Driven Design**: Focus on the core domain and domain logic
 4. **Clean Architecture**: Dependencies point inward, with domain at the center
+
+### Communication between domains
+
+each usecase has a controller handling the http requests and responses, the usecases work as orchestrators, each service should have the operations that are needed to be performed by the usecase, and the usecase should be the one that calls the services, this way we avoid circular dependencies and we can easily test the usecases in isolation, repositories just handle the database operations.
+
 
 ## Project Structure
 

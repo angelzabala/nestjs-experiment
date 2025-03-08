@@ -11,7 +11,7 @@ export class CreateAndGetUserUseCase {
   ) {}
 
   async execute(createUserDto: GetUserDto): Promise<CreateAndGetUserResponseDto> {
-    const user = await this.createUserService.create(createUserDto);
+    const user = await this.createUserService.createAndGet(createUserDto);
     if(user){
       return new CreateAndGetUserResponseDto(user as User);
     }

@@ -10,7 +10,7 @@ export class CreateAndGetUserService {
     private readonly userRepository: IUserRepository
   ) {}
 
-  async create(createUserDto: GetUserDto): Promise<User> {
+  async createAndGet(createUserDto: GetUserDto): Promise<User> {
     try {
       await this.userRepository.create(createUserDto);
       const foundUser = await this.userRepository.get(createUserDto);
